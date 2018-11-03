@@ -18,6 +18,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    self.viewController.interactor = nil;
+}
+
 @end
 
 
@@ -30,7 +35,7 @@
 
 - (void)setInteractor:(RIBPresentableInteractor *)interactor
 {
-    objc_setAssociatedObject(self, @selector(interactor), interactor, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, @selector(interactor), interactor, OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end
