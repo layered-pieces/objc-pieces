@@ -8,6 +8,10 @@
 
 #import "LoggedOutBuilder.h"
 
+@interface LoggedOutBuilder ()
+
+@end
+
 @implementation LoggedOutBuilder
 
 + (LoggedOutRouter *)buildWithDelegate:(id<LoggedOutInteractorDelegate>)delegate

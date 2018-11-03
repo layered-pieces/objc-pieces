@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoggedOutInteractor : RIBPresentableInteractor<LoggedOutRouter *, LoggedOutViewController *>
 
-@property (nonatomic, weak) id<LoggedOutInteractorDelegate> delegate;
+@property (nonatomic, weak, readonly) id<LoggedOutInteractorDelegate> delegate;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithViewController:(LoggedOutViewController *)viewController NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;

@@ -8,10 +8,20 @@
 
 #import "LoggedOutRouter.h"
 
-#import "LoggedOutViewController.h"
+@interface LoggedOutRouter ()
+
+@end
 
 @implementation LoggedOutRouter
 @dynamic applicationEnvironment;
+
+- (instancetype)initWithInteractor:(LoggedOutInteractor *)interactor
+{
+    if (self = [super initWithInteractor:interactor]) {
+        
+    }
+    return self;
+}
 
 - (void)didLoad
 {

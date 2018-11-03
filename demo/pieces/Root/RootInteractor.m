@@ -12,6 +12,14 @@
 
 @implementation RootInteractor
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
 - (void)didActivate
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"] == nil) {

@@ -8,14 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@import pieces;
 #import "LoggedOutInteractor.h"
+
+@import pieces;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LoggedOutRouter : RIBRouter<LoggedOutInteractor *>
 
 @property (nonatomic, readonly) id<RIBApplicationEnvironment> applicationEnvironment;
+
+- (instancetype)initWithInteractor:(LoggedOutInteractor *)interactor NS_DESIGNATED_INITIALIZER;
 
 @end
 

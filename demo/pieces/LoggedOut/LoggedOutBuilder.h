@@ -15,7 +15,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LoggedOutBuilder : NSObject
+@interface LoggedOutBuilder : NSObject <RIBBuilder>
 
 + (LoggedOutRouter *)buildWithDelegate:(id<LoggedOutInteractorDelegate>)delegate;
 

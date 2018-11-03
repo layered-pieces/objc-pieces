@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class LoggedOutViewController;
-
 NS_ASSUME_NONNULL_BEGIN
+
+@class LoggedOutViewController;
 
 @protocol LoggedOutViewControllerDelegate <NSObject>
 
@@ -21,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LoggedOutViewController : UIViewController
 
 @property (nonatomic, weak) id<LoggedOutViewControllerDelegate> delegate;
+
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 
 @end
 

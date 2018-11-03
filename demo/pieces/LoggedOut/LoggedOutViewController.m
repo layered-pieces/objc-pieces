@@ -17,6 +17,20 @@
 
 @implementation LoggedOutViewController
 
+#pragma setters and getters
+
+#pragma initialisation
+
+- (instancetype)init
+{
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        
+    }
+    return self;
+}
+
+#pragma view lifecycle
+
 - (void)loadView
 {
     [super loadView];
@@ -45,6 +59,8 @@
     self.textField.frame = CGRectMake(16.0, 50.0, CGRectGetWidth(bounds) - 2.0 * 16.0, 44.0);
     self.button.frame = CGRectMake(16.0, CGRectGetMaxY(self.textField.frame) + 8.0, CGRectGetWidth(bounds) - 2.0 * 16.0, 44.0);
 }
+
+#pragma private category implementation ()
 
 - (void)_buttonTapped:(UIButton *)sender
 {
