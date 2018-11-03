@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Kind</key>
+  <string>Xcode.IDEKit.TextSubstitutionFileTemplateKind</string>
+
+  <key>Platforms</key>
+  <array>
+    <string>com.apple.platform.iphoneos</string>
+  </array>
+
+  <key>Options</key>
+  <array>
+    <dict>
+      <key>Identifier</key>
+      <string>productName</string>
+      <key>Required</key>
+      <true/>
+      <key>Name</key>
+      <string>Name:</string>
+      <key>Description</key>
+      <string>The name of the pieces RIB</string>
+      <key>Type</key>
+      <string>text</string>
+      <key>Default</key>
+      <string></string>
+    </dict>
+
+    <dict>
+      <key>Identifier</key>
+      <string>interactor</string>
+      <key>Required</key>
+      <true/>
+      <key>Name</key>
+      <string>Interactor:</string>
+      <key>Description</key>
+      <string>The type of interactor</string>
+      <key>Type</key>
+      <string>popup</string>
+      <key>Default</key>
+      <string>Without UI</string>
+      <key>Values</key>
+      <array>
+        <string>Without UI</string>
+        <string>ViewController</string>
+        <string>View</string>
+      </array>
+    </dict>
+
+    <dict>
+      <key>Identifier</key>
+      <string>presenter</string>
+      <key>Name</key>
+      <string>Separate presenter</string>
+      <key>Description</key>
+      <string>Move presenter logic into separate subclass</string>
+      <key>Type</key>
+      <string>checkbox</string>
+      <key>RequiredOptions</key>
+      <dict>
+        <key>interactor</key>
+        <array>
+          <string>ViewController</string>
+          <string>View</string>
+        </array>
+      </dict>
+    </dict>
+
+    <dict>
+      <key>Identifier</key>
+      <string>interactorDelegate</string>
+      <key>Name</key>
+      <string>Interactor delegate</string>
+      <key>Description</key>
+      <string>Interactor has a separate delegate</string>
+      <key>Type</key>
+      <string>checkbox</string>
+    </dict>
+  </array>
+</dict>
+</plist>
