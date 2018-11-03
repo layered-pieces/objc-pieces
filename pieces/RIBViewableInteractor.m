@@ -14,6 +14,7 @@
 {
     if (self = [super init]) {
         _view = view;
+        _view.interactor = self;
     }
     return self;
 }

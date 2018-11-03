@@ -7,14 +7,11 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol RIBPresenter;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RIBInteractor<Router> : NSObject
 
 @property (nonatomic, weak) Router router;
-@property (nonatomic, nullable) id<RIBPresenter> presenter;
 
 @property (nonatomic, readonly) BOOL isActive;
 

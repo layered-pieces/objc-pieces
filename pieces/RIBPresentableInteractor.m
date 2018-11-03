@@ -14,6 +14,7 @@
 {
     if (self = [super init]) {
         _viewController = viewController;
+        _viewController.interactor = self;
     }
     return self;
 }
