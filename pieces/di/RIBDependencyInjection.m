@@ -20,6 +20,7 @@ static NSMutableDictionary<NSString *, NSArray<NSString *> *> *_dependencyGraph 
     _dependencyGraph = [NSMutableDictionary dictionary];
     
     [self addDependencyPath:UIViewController.class properties:@[ NSStringFromSelector(@selector(parentViewController)), NSStringFromSelector(@selector(presentingViewController)) ]];
+    [self addDependencyPath:UIView.class properties:@[ NSStringFromSelector(@selector(superview)) ]];
     [self addDependencyPath:UIResponder.class properties:@[ NSStringFromSelector(@selector(nextResponder)) ]];
 }
 
@@ -44,7 +45,7 @@ static NSMutableDictionary<NSString *, NSArray<NSString *> *> *_dependencyGraph 
 {
     @synchronized (self) {
         NSMutableArray<NSString *> *leafs = [NSMutableArray arrayWithArray:_dependencyGraph[NSStringFromClass(klass)]];
-        [leafs addObjectsFromArray:properties];
+        [leafs insertObjects:properties atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, properties.count)]];
         _dependencyGraph[NSStringFromClass(klass)] = leafs;
     }
     

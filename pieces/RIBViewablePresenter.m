@@ -6,9 +6,20 @@
 //
 
 #import "RIBViewablePresenter.h"
+#import "di/RIBDependencyInjection.h"
+
 #import <objc/runtime.h>
 
 @implementation RIBViewablePresenter
+
++ (void)initialize
+{
+    if (self != RIBViewablePresenter.class) {
+        return;
+    }
+    
+    [RIBDependencyInjection addDependencyPath:UIView.class properties:@[ NSStringFromSelector(@selector(presenter)) ]];
+}
 
 - (instancetype)initWithView:(UIView *)view
 {
