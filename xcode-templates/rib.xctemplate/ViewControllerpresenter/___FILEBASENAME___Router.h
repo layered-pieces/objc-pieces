@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 __attribute__((objc_subclassing_restricted))
 @interface ___VARIABLE_productName___Router : RIBRouter<___VARIABLE_productName___Interactor *>
 
+- (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(___VARIABLE_productName___Interactor *)interactor NS_DESIGNATED_INITIALIZER;
 
 @end

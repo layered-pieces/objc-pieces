@@ -8,18 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-#import "___VARIABLE_productName___Router.h"
-#import "___VARIABLE_productName___Interactor.h"
 #import "___VARIABLE_productName___Presenter.h"
 
 @import pieces;
 
 NS_ASSUME_NONNULL_BEGIN
 
-__attribute__((objc_subclassing_restricted))
-@interface ___VARIABLE_productName___Builder : NSObject <RIBBuilder>
+@class ___VARIABLE_productName___Router;
 
-+ (___VARIABLE_productName___Router *)build;
+__attribute__((objc_subclassing_restricted))
+@interface ___VARIABLE_productName___Interactor : RIBPresentingInteractor<___VARIABLE_productName___Router *, ___VARIABLE_productName___Presenter *>
+
+@end
+
+@interface ___VARIABLE_productName___Interactor (___VARIABLE_productName___PresenterDelegate) <___VARIABLE_productName___PresenterDelegate>
 
 @end
 

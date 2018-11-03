@@ -10,6 +10,7 @@
 
 #import "___VARIABLE_productName___Router.h"
 #import "___VARIABLE_productName___Interactor.h"
+#import "___VARIABLE_productName___Presenter.h"
 
 @import pieces;
 

@@ -16,7 +16,8 @@
 
 + (___VARIABLE_productName___Router *)build
 {
-    ___VARIABLE_productName___Interactor *interactor = [[___VARIABLE_productName___Interactor alloc] init];
+    ___VARIABLE_productName___Presenter *presenter = [[___VARIABLE_productName___Presenter alloc] init];
+    ___VARIABLE_productName___Interactor *interactor = [[___VARIABLE_productName___Interactor alloc] initWithPresenter:presenter];
     ___VARIABLE_productName___Router *router = [[___VARIABLE_productName___Router alloc] initWithInteractor:interactor];
 
     return router;
