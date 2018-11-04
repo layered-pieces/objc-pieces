@@ -15,7 +15,10 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        
+        __weak typeof(self) welf = self;
+        _logoutAction = ^{
+            [welf.router routeToLoggedOut];
+        };
     }
     return self;
 }

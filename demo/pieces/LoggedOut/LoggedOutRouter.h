@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) id<RIBApplicationEnvironment> applicationEnvironment;
 
+- (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(LoggedOutInteractor *)interactor NS_DESIGNATED_INITIALIZER;
 
 @end

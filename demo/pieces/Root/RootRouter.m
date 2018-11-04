@@ -47,6 +47,11 @@
 {
     assert(self.loggedOut == nil);
     
+    if (self.loggedIn != nil) {
+        [self detachChild:self.loggedIn];
+        self.loggedIn = nil;
+    }
+    
     self.applicationEnvironment.window.rootViewController = [[UIViewController alloc] init];
     self.applicationEnvironment.window.rootViewController.view.backgroundColor = [UIColor blueColor];
     
@@ -60,7 +65,7 @@
         [self detachChild:self.loggedOut];
         self.loggedOut = nil;
         
-        self.loggedIn = [LoggedInBuilder build];
+        self.loggedIn = [LoggedInBuilder buildWithLogoutAction:self.interactor.logoutAction];
         [self attachChild:self.loggedIn];
         
         self.applicationEnvironment.window.rootViewController = self.loggedIn.interactor.navigationController;
