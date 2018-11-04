@@ -7,7 +7,6 @@
 //
 
 #import "___VARIABLE_productName___Interactor.h"
-
 #import "___VARIABLE_productName___Router.h"
 
 @implementation ___VARIABLE_productName___Interactor
