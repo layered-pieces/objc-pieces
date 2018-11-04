@@ -196,8 +196,8 @@
 - (BOOL)_isGloballyAttached
 {
     RIBRouter *parent = self;
-    while (self.parent != nil) {
-        parent = self.parent;
+    while (parent.parent != nil) {
+        parent = parent.parent;
     }
     
     return parent.attachedWindow != nil;
