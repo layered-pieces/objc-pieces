@@ -26,6 +26,11 @@
 
 - (BOOL)object:(id<RIBDependencyContainer>)object listensForDependency:(NSString *)dependency
 {
+    objc_property_t objcProperty = class_getProperty(object_getClass(object), dependency.UTF8String);
+    if (objcProperty == NULL) {
+        return NO;
+    }
+
     return rib_propertyIsDynamic(object_getClass(object), dependency) && [self containsDependency:dependency type:rib_propertyCopyType(object_getClass(object), dependency)];
 }
 
@@ -43,6 +48,10 @@
 {
     NSMutableArray *result = [NSMutableArray array];
     void(^appendChildren)(id children) = ^(id children) {
+        if (children == nil) {
+            return;
+        }
+        
         if ([children isKindOfClass:NSArray.class]) {
             [result addObjectsFromArray:children];
         } else {
@@ -66,6 +75,10 @@
 {
     NSMutableArray *result = [NSMutableArray array];
     void(^appendChildren)(id children) = ^(id children) {
+        if (children == nil) {
+            return;
+        }
+
         if ([children isKindOfClass:NSArray.class]) {
             [result addObjectsFromArray:children];
         } else {
@@ -203,6 +216,11 @@ void rib_implementInjectedPropertiesInImage(NSString *image)
 {
     unsigned int count = 0;
     const char **classes = objc_copyClassNamesForImage(image.UTF8String, &count);
+    
+    // initialize all classes
+    for (unsigned int i = 0; i < count; i++) {
+        (void)[NSClassFromString(@(classes[i])) class];
+    }
     
     for (unsigned int i = 0; i < count; i++) {
         Class klass = NSClassFromString(@(classes[i]));
