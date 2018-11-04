@@ -31,6 +31,29 @@
     }
 }
 
+- (void)setChildViewController:(UIViewController *)childViewController
+{
+    if (_childViewController) {
+        [_childViewController willMoveToParentViewController:nil];
+        [_childViewController removeFromParentViewController];
+        
+        if (_childViewController.isViewLoaded) {
+            [_childViewController.view removeFromSuperview];
+        }
+    }
+    
+    _childViewController = childViewController;
+    
+    if (_childViewController) {
+        [self addChildViewController:_childViewController];
+        [_childViewController didMoveToParentViewController:self];
+        
+        if (self.isViewLoaded) {
+            [self _updateViewFromCurrentState];
+        }
+    }
+}
+
 #pragma initialisation
 
 - (instancetype)init
@@ -76,6 +99,9 @@
     
     CGFloat dimension = 200.0;
     self.colorView.frame = CGRectMake(CGRectGetMidX(bounds) - dimension / 2.0, CGRectGetMaxY(self.segmentedContol.frame) + 16.0, dimension, dimension);
+    
+    self.childViewController.view.frame = CGRectMake(0.0, CGRectGetMaxY(self.colorView.frame) + 16.0,
+                                                     CGRectGetWidth(bounds), CGRectGetMaxY(bounds) - CGRectGetMaxY(self.colorView.frame) - 16.0);
 }
 
 #pragma private category implementation ()
@@ -97,6 +123,8 @@
             [self.segmentedContol setSelectedSegmentIndex:i];
         }
     }
+    
+    [self.view addSubview:self.childViewController.view];
 }
 
 @end

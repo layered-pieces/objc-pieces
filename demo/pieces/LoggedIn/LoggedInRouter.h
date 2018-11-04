@@ -18,6 +18,7 @@ __attribute__((objc_subclassing_restricted))
 @interface LoggedInRouter : RIBRouter<LoggedInInteractor *>
 
 @property (nonatomic, strong) NSString *backgroundColor;
+@property (nonatomic, strong) NSString *playerName;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(LoggedInInteractor *)interactor NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;

@@ -32,6 +32,7 @@
 
 - (void)loggedOutViewController:(LoggedOutViewController *)viewController didLoginWithName:(NSString *)name
 {
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"settings.name"];
     [self.delegate loggedOutInteractor:self didLoginWithName:name];
 }
 

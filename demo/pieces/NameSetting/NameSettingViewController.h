@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  NameSettingViewController.h
 //  demo
 //
 //  Created by Oliver Letterer on 04.11.18.
@@ -7,25 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingsEnvironment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class SettingsViewController;
+@class NameSettingViewController;
 
-@protocol SettingsViewControllerDelegate <NSObject>
+@protocol NameSettingViewControllerDelegate <NSObject>
 
-- (void)settingsViewController:(SettingsViewController *)viewController didSelectColor:(NSString *)color;
+- (void)nameSettingViewController:(NameSettingViewController *)viewController didChangeName:(NSString *)name;
 
 @end
 
 __attribute__((objc_subclassing_restricted))
-@interface SettingsViewController : UIViewController <SettingsEnvironment>
+@interface NameSettingViewController : UIViewController
 
-@property (nonatomic, weak) id<SettingsViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<NameSettingViewControllerDelegate> delegate;
 
-@property (nonatomic, strong) NSString *color;
-@property (nonatomic, nullable) UIViewController *childViewController;
+@property (nonatomic, nullable) NSString *name;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 

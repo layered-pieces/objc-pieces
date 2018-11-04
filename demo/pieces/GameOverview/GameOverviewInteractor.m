@@ -12,11 +12,12 @@
 @interface GameOverviewInteractor ()
 
 @property (nonatomic, readonly) NSString *backgroundColor;
+@property (nonatomic, readonly) NSString *playerName;
 
 @end
 
 @implementation GameOverviewInteractor
-@dynamic backgroundColor;
+@dynamic backgroundColor, playerName;
 
 - (instancetype)init
 {
@@ -25,6 +26,7 @@
 
     if (self = [super initWithViewController:viewController]) {
         if (self.backgroundColor != nil) {
+            viewController.title = self.playerName;
             viewController.view.backgroundColor = [(id)[UIColor class] valueForKey:[NSString stringWithFormat:@"%@Color", self.backgroundColor]];
         }
     }
@@ -33,6 +35,7 @@
 
 - (void)rib_injectedDependencyDidChange:(NSString *)dependency
 {
+    self.viewController.title = self.playerName;
     self.viewController.view.backgroundColor = [(id)[UIColor class] valueForKey:[NSString stringWithFormat:@"%@Color", self.backgroundColor]];
 }
 

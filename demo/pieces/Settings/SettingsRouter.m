@@ -8,10 +8,12 @@
 
 #import "SettingsRouter.h"
 #import "CompletionActionBuilder.h"
+#import "NameSettingBuilder.h"
 
 @interface SettingsRouter ()
 
 @property (nonatomic, readonly) CompletionActionRouter *completionAction;
+@property (nonatomic, readonly) NameSettingRouter *nameSetting;
 
 @end
 
@@ -22,6 +24,9 @@
     if (self = [super initWithInteractor:interactor]) {
         _completionAction = [CompletionActionBuilder buildWithBlock:interactor.complectionAction];
         [self attachChild:self.completionAction];
+        
+        _nameSetting = [NameSettingBuilder buildWithEnvironment:self.interactor.presenter.viewController];
+        [self attachChild:_nameSetting];
         
         self.interactor.presenter.viewController.navigationItem.rightBarButtonItem = self.completionAction.interactor.barButtonItem;
     }

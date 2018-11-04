@@ -23,6 +23,7 @@
 + (void)initialize
 {
     [self registerInjectableDependency:NSStringFromSelector(@selector(backgroundColor))];
+    [self registerInjectableDependency:NSStringFromSelector(@selector(playerName))];
 }
 
 - (instancetype)initWithInteractor:(LoggedInInteractor *)interactor logoutAction:(nonnull dispatch_block_t)logoutAction
@@ -33,6 +34,7 @@
         
         self.interactor.navigationController.viewControllers = @[ self.gameOverview.interactor.viewController ];
         self.backgroundColor = [[NSUserDefaults standardUserDefaults] stringForKey:@"settings.color"];
+        self.playerName = [[NSUserDefaults standardUserDefaults] stringForKey:@"settings.name"];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_userDefaultsDidChange) name:NSUserDefaultsDidChangeNotification object:nil];
     }
@@ -42,6 +44,7 @@
 - (void)_userDefaultsDidChange
 {
     self.backgroundColor = [[NSUserDefaults standardUserDefaults] stringForKey:@"settings.color"];
+    self.playerName = [[NSUserDefaults standardUserDefaults] stringForKey:@"settings.name"];
 }
 
 @end
