@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RootBuilder : NSObject <RIBBuilder>
 
-+ (RootRouter *)build;
++ (RootRouter *)buildWithEnvironment:(id<RIBApplicationEnvironment>)applicationEnvironment;
 
 @end
 

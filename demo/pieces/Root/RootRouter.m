@@ -9,16 +9,22 @@
 #import "RootRouter.h"
 #import "RootInteractor.h"
 
+#import "LoggedInBuilder.h"
 #import "LoggedOutBuilder.h"
 
 @interface RootRouter ()
 
 @property (nonatomic, nullable) LoggedOutRouter *loggedOut;
+@property (nonatomic, nullable) LoggedInRouter *loggedIn;
 
 @end
 
 @implementation RootRouter
-@dynamic applicationEnvironment;
+
++ (void)initialize
+{
+    [self registerInjectableDependency:NSStringFromSelector(@selector(applicationEnvironment))];
+}
 
 - (void)launch:(UIWindow *)window
 {
@@ -29,10 +35,10 @@
     window.rootRouter = self;
 }
 
-- (instancetype)initWithInteractor:(RootInteractor *)interactor
+- (instancetype)initWithInteractor:(RootInteractor *)interactor environment:(nonnull id<RIBApplicationEnvironment>)applicationEnvironment
 {
     if (self = [super initWithInteractor:interactor]) {
-        
+        _applicationEnvironment = applicationEnvironment;
     }
     return self;
 }
@@ -54,8 +60,10 @@
         [self detachChild:self.loggedOut];
         self.loggedOut = nil;
         
-        self.applicationEnvironment.window.rootViewController = [[UIViewController alloc] init];
-        self.applicationEnvironment.window.rootViewController.view.backgroundColor = [UIColor orangeColor];
+        self.loggedIn = [LoggedInBuilder build];
+        [self attachChild:self.loggedIn];
+        
+        self.applicationEnvironment.window.rootViewController = self.loggedIn.interactor.navigationController;
     }];
 }
 

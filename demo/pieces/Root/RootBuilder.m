@@ -13,10 +13,10 @@
 
 @implementation RootBuilder
 
-+ (RootRouter *)build
++ (RootRouter *)buildWithEnvironment:(id<RIBApplicationEnvironment>)applicationEnvironment
 {
     RootInteractor *interactor = [[RootInteractor alloc] init];
-    RootRouter *router = [[RootRouter alloc] initWithInteractor:interactor];
+    RootRouter *router = [[RootRouter alloc] initWithInteractor:interactor environment:applicationEnvironment];
     
     return router;
 }

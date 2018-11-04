@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "RootInteractor.h"
 
 @import pieces;
@@ -19,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) id<RIBApplicationEnvironment> applicationEnvironment;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
-- (instancetype)initWithInteractor:(RootInteractor *)interactor NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithInteractor:(RootInteractor *)interactor NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
+- (instancetype)initWithInteractor:(RootInteractor *)interactor environment:(id<RIBApplicationEnvironment>)applicationEnvironment NS_DESIGNATED_INITIALIZER;
 
 - (void)routeToLoggedOut;
 - (void)routeToLoggedInWithName:(NSString *)name;
