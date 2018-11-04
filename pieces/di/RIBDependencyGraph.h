@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+__attribute__((objc_subclassing_restricted))
 @interface RIBDependencyNode : NSObject
 
 @property (nonatomic, readonly) Class klass;
@@ -18,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+__attribute__((objc_subclassing_restricted))
 @interface RIBDependency : NSObject
 
 @property (nonatomic, readonly) Class klass;
@@ -27,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+__attribute__((objc_subclassing_restricted))
 @interface RIBDependencyGraph : NSObject
 
 @property (nonatomic, readonly) NSDictionary<NSString *, RIBDependencyNode *> *graph;
