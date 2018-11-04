@@ -6,20 +6,10 @@
 //
 
 #import "RIBViewableInteractor.h"
-#import "di/RIBDependencyInjection.h"
 
 #import <objc/runtime.h>
 
 @implementation RIBViewableInteractor
-
-+ (void)initialize
-{
-    if (self != RIBViewableInteractor.class) {
-        return;
-    }
-    
-    [RIBDependencyInjection addDependencyPath:UIView.class properties:@[ NSStringFromSelector(@selector(interactor)) ]];
-}
 
 - (instancetype)initWithView:(UIView *)view
 {

@@ -6,7 +6,10 @@
 //
 
 #import "RIBInteractor.h"
-#import "di/RIBDependencyInjection.h"
+#import "RIBRouter.h"
+
+#import "di/runtime.h"
+#import "di/RIBDependencyGraph.h"
 
 @interface RIBInteractor ()
 
@@ -19,24 +22,32 @@
 
 @implementation RIBInteractor
 
-+ (void)initialize
-{
-    [RIBDependencyInjection addDependencyPath:RIBInteractor.class properties:@[ NSStringFromSelector(@selector(router)) ]];
-}
-
-+ (BOOL)resolveInstanceMethod:(SEL)sel
-{
-    if ([self resolveInjectedProperty:sel]) {
-        return YES;
-    }
-    
-    return [super resolveInstanceMethod:sel];
-}
-
 - (instancetype)init
 {
     return [super init];
 }
+
+#pragma mark - RIBDependencyContainer
+
++ (RIBDependencyGraph *)dependencyGraph
+{
+    return RIBRouter.dependencyGraph;
+}
+
++ (void)registerInjectableDependency:(NSString *)dependency
+{
+    assert([self dependencyGraph] != nil);
+    
+    rib_implementDependencyObserver(self, dependency);
+    [[self dependencyGraph] klass:self registerDependency:dependency];
+}
+
+- (void)rib_injectedDependencyDidChange:(NSString *)dependency
+{
+    
+}
+
+#pragma mark - private category implementation ()
 
 - (void)_internalActivate
 {

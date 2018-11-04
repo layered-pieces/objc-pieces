@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <pieces/RIBDependencyContainer.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RIBInteractor<Router> : NSObject
+@interface RIBInteractor<Router> : NSObject <RIBDependencyContainer>
 
 @property (nonatomic, weak) Router router;
 

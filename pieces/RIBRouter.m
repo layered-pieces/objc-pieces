@@ -6,8 +6,16 @@
 //
 
 #import "RIBRouter.h"
+
 #import "RIBInteractor.h"
-#import "di/RIBDependencyInjection.h"
+#import "RIBViewingInteractor.h"
+#import "RIBPresentingInteractor.h"
+
+#import "RIBViewablePresenter.h"
+#import "RIBPresentablePresenter.h"
+
+#import "di/runtime.h"
+#import "di/RIBDependencyGraph.h"
 
 #import <objc/runtime.h>
 
@@ -34,7 +42,9 @@
 
 + (void)initialize
 {
-    [RIBDependencyInjection addDependencyPath:RIBRouter.class properties:@[ NSStringFromSelector(@selector(parent)), NSStringFromSelector(@selector(attachedWindow)) ]];
+    if (self == RIBRouter.class) {
+        [self setDependencyGraph:[self defaultDependencyGraph]];
+    }
 }
 
 + (void)load
@@ -43,13 +53,21 @@
     assert([RIBInteractor instanceMethodForSelector:@selector(_internalDeactivate)] != NULL);
 }
 
-+ (BOOL)resolveInstanceMethod:(SEL)sel
++ (RIBDependencyGraph *)defaultDependencyGraph
 {
-    if ([self resolveInjectedProperty:sel]) {
-        return YES;
-    }
+    RIBDependencyGraph *dependencyGraph = [[RIBDependencyGraph alloc] init];
     
-    return [super resolveInstanceMethod:sel];
+    [dependencyGraph klass:RIBRouter.class registerParent:NSStringFromSelector(@selector(parent))];
+    [dependencyGraph klass:RIBRouter.class registerChildren:@[ NSStringFromSelector(@selector(children)), NSStringFromSelector(@selector(interactor)) ]];
+    
+    [dependencyGraph klass:RIBInteractor.class registerParent:NSStringFromSelector(@selector(router))];
+    [dependencyGraph klass:RIBViewingInteractor.class registerChildren:@[ NSStringFromSelector(@selector(presenter)) ]];
+    [dependencyGraph klass:RIBPresentingInteractor.class registerChildren:@[ NSStringFromSelector(@selector(presenter)) ]];
+    
+    [dependencyGraph klass:RIBViewablePresenter.class registerParent:NSStringFromSelector(@selector(interactor))];
+    [dependencyGraph klass:RIBPresentablePresenter.class registerParent:NSStringFromSelector(@selector(interactor))];
+    
+    return dependencyGraph;
 }
 
 - (NSMutableArray<RIBRouter *> *)mutableChildren
@@ -68,6 +86,33 @@
     }
     return self;
 }
+
+#pragma mark - RIBDependencyContainer
+
++ (RIBDependencyGraph *)dependencyGraph
+{
+    return objc_getAssociatedObject(RIBRouter.class, @selector(dependencyGraph));
+}
+
++ (void)setDependencyGraph:(RIBDependencyGraph *)dependencyGraph
+{
+    objc_setAssociatedObject(RIBRouter.class, @selector(dependencyGraph), dependencyGraph, OBJC_ASSOCIATION_RETAIN);
+}
+
++ (void)registerInjectableDependency:(NSString *)dependency
+{
+    assert([self dependencyGraph] != nil);
+    
+    rib_implementDependencyObserver(self, dependency);
+    [[self dependencyGraph] klass:self registerDependency:dependency];
+}
+
+- (void)rib_injectedDependencyDidChange:(NSString *)dependency
+{
+    
+}
+
+#pragma mark - instance methods
 
 - (void)attachChild:(RIBRouter *)childRouter
 {
@@ -104,6 +149,8 @@
     childRouter.parent = nil;
     [childRouter didDetachFromParent:self];
 }
+
+#pragma mark - private category implementation ()
 
 - (void)_internalLoad
 {

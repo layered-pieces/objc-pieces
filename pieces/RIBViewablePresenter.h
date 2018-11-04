@@ -7,10 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <pieces/RIBDependencyContainer.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RIBViewablePresenter<Interactor, View: UIView *> : NSObject
+@interface RIBViewablePresenter<Interactor, View: UIView *> : NSObject <RIBDependencyContainer>
 
 @property (nonatomic, weak) Interactor interactor;
 

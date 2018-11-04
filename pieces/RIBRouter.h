@@ -6,8 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <pieces/RIBDependencyContainer.h>
 
-@class RIBInteractor, RIBRouter;
+@class RIBInteractor, RIBRouter, RIBDependencyGraph;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface RIBRouter<Interactor: RIBInteractor *> : NSObject
+@interface RIBRouter<Interactor: RIBInteractor *> : NSObject <RIBDependencyContainer>
+
+@property (nonatomic, nullable, class) RIBDependencyGraph *dependencyGraph;
+@property (nonatomic, class, readonly) RIBDependencyGraph *defaultDependencyGraph;
 
 @property (nonatomic, readonly) Interactor interactor;
 

@@ -6,20 +6,14 @@
 //
 
 #import "RIBViewablePresenter.h"
-#import "di/RIBDependencyInjection.h"
+#import "RIBRouter.h"
+
+#import "di/runtime.h"
+#import "di/RIBDependencyGraph.h"
 
 #import <objc/runtime.h>
 
 @implementation RIBViewablePresenter
-
-+ (void)initialize
-{
-    if (self != RIBViewablePresenter.class) {
-        return;
-    }
-    
-    [RIBDependencyInjection addDependencyPath:UIView.class properties:@[ NSStringFromSelector(@selector(presenter)) ]];
-}
 
 - (instancetype)initWithView:(UIView *)view
 {
@@ -28,6 +22,26 @@
         _view.presenter = self;
     }
     return self;
+}
+
+#pragma mark - RIBDependencyContainer
+
++ (RIBDependencyGraph *)dependencyGraph
+{
+    return RIBRouter.dependencyGraph;
+}
+
++ (void)registerInjectableDependency:(NSString *)dependency
+{
+    assert([self dependencyGraph] != nil);
+    
+    rib_implementDependencyObserver(self, dependency);
+    [[self dependencyGraph] klass:self registerDependency:dependency];
+}
+
+- (void)rib_injectedDependencyDidChange:(NSString *)dependency
+{
+    
 }
 
 - (void)dealloc
