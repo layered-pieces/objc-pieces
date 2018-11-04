@@ -33,6 +33,11 @@
 		A7D190B4218E25D4004801B0 /* CompletionActionInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190AE218E25D4004801B0 /* CompletionActionInteractor.m */; };
 		A7D190B5218E25D4004801B0 /* CompletionActionRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190AF218E25D4004801B0 /* CompletionActionRouter.m */; };
 		A7D190B6218E25D4004801B0 /* CompletionActionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190B0218E25D4004801B0 /* CompletionActionBuilder.m */; };
+		A7D190DC218F627A004801B0 /* SettingsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190D3218F627A004801B0 /* SettingsInteractor.m */; };
+		A7D190DD218F627A004801B0 /* SettingsRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190D4218F627A004801B0 /* SettingsRouter.m */; };
+		A7D190DE218F627A004801B0 /* SettingsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190D6218F627A004801B0 /* SettingsBuilder.m */; };
+		A7D190DF218F627A004801B0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190D7218F627A004801B0 /* SettingsViewController.m */; };
+		A7D190E0218F627A004801B0 /* SettingsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190DA218F627A004801B0 /* SettingsPresenter.m */; };
 		ED8E1ABCE80C36D24BD1D29C /* Pods_abstract_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D927CF478C266AB7D14063 /* Pods_abstract_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +95,16 @@
 		A7D190B1218E25D4004801B0 /* CompletionActionRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletionActionRouter.h; sourceTree = "<group>"; };
 		A7D190B2218E25D4004801B0 /* CompletionActionInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletionActionInteractor.h; sourceTree = "<group>"; };
 		A7D190B3218E25D4004801B0 /* CompletionActionBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletionActionBuilder.h; sourceTree = "<group>"; };
+		A7D190D2218F627A004801B0 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		A7D190D3218F627A004801B0 /* SettingsInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsInteractor.m; sourceTree = "<group>"; };
+		A7D190D4218F627A004801B0 /* SettingsRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsRouter.m; sourceTree = "<group>"; };
+		A7D190D5218F627A004801B0 /* SettingsPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsPresenter.h; sourceTree = "<group>"; };
+		A7D190D6218F627A004801B0 /* SettingsBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsBuilder.m; sourceTree = "<group>"; };
+		A7D190D7218F627A004801B0 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		A7D190D8218F627A004801B0 /* SettingsRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsRouter.h; sourceTree = "<group>"; };
+		A7D190D9218F627A004801B0 /* SettingsInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsInteractor.h; sourceTree = "<group>"; };
+		A7D190DA218F627A004801B0 /* SettingsPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsPresenter.m; sourceTree = "<group>"; };
+		A7D190DB218F627A004801B0 /* SettingsBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsBuilder.h; sourceTree = "<group>"; };
 		F7846A9DB3D792137C904793 /* Pods-abstract-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-abstract-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-abstract-demo/Pods-abstract-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,12 +134,10 @@
 			children = (
 				A7D19089218E1953004801B0 /* NavigationEnvironment.h */,
 				A7D190AD218E25C0004801B0 /* CompletionAction */,
-				A793CD76218C751F00D96799 /* BlueSetting */,
 				A793CD77218C751F00D96799 /* Game */,
 				A793CD75218C751F00D96799 /* GameOverview */,
 				A793CD79218C751F00D96799 /* LoggedIn */,
 				A793CD78218C751F00D96799 /* LoggedOut */,
-				A793CD73218C751F00D96799 /* RedSetting */,
 				A793CD7A218C751F00D96799 /* Root */,
 				A793CD74218C751F00D96799 /* Settings */,
 				A7D1907F218E17CD004801B0 /* SettingsAction */,
@@ -132,16 +145,19 @@
 			path = pieces;
 			sourceTree = "<group>";
 		};
-		A793CD73218C751F00D96799 /* RedSetting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RedSetting;
-			sourceTree = "<group>";
-		};
 		A793CD74218C751F00D96799 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A7D190DB218F627A004801B0 /* SettingsBuilder.h */,
+				A7D190D6218F627A004801B0 /* SettingsBuilder.m */,
+				A7D190D9218F627A004801B0 /* SettingsInteractor.h */,
+				A7D190D3218F627A004801B0 /* SettingsInteractor.m */,
+				A7D190D5218F627A004801B0 /* SettingsPresenter.h */,
+				A7D190DA218F627A004801B0 /* SettingsPresenter.m */,
+				A7D190D8218F627A004801B0 /* SettingsRouter.h */,
+				A7D190D4218F627A004801B0 /* SettingsRouter.m */,
+				A7D190D2218F627A004801B0 /* SettingsViewController.h */,
+				A7D190D7218F627A004801B0 /* SettingsViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -159,13 +175,6 @@
 				A7D190A5218E1B23004801B0 /* GameOverviewViewController.m */,
 			);
 			path = GameOverview;
-			sourceTree = "<group>";
-		};
-		A793CD76218C751F00D96799 /* BlueSetting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BlueSetting;
 			sourceTree = "<group>";
 		};
 		A793CD77218C751F00D96799 /* Game */ = {
@@ -431,6 +440,7 @@
 				A7C1C816218C5F59009F4676 /* AppDelegate.m in Sources */,
 				A793CD7D218C753300D96799 /* RootBuilder.m in Sources */,
 				A793CD8D218C7FBB00D96799 /* LoggedOutInteractor.m in Sources */,
+				A7D190DD218F627A004801B0 /* SettingsRouter.m in Sources */,
 				A7D190B4218E25D4004801B0 /* CompletionActionInteractor.m in Sources */,
 				A793CD87218C7F9F00D96799 /* LoggedOutBuilder.m in Sources */,
 				A7D19088218E17F0004801B0 /* SettingsActionBuilder.m in Sources */,
@@ -439,9 +449,13 @@
 				A7D19094218E19D5004801B0 /* LoggedInBuilder.m in Sources */,
 				A7D19093218E19D5004801B0 /* LoggedInRouter.m in Sources */,
 				A793CD80218C756B00D96799 /* RootRouter.m in Sources */,
+				A7D190DC218F627A004801B0 /* SettingsInteractor.m in Sources */,
 				A7D19086218E17F0004801B0 /* SettingsActionInteractor.m in Sources */,
+				A7D190DE218F627A004801B0 /* SettingsBuilder.m in Sources */,
+				A7D190E0218F627A004801B0 /* SettingsPresenter.m in Sources */,
 				A793CD8A218C7FAF00D96799 /* LoggedOutRouter.m in Sources */,
 				A7D19092218E19D5004801B0 /* LoggedInInteractor.m in Sources */,
+				A7D190DF218F627A004801B0 /* SettingsViewController.m in Sources */,
 				A7D190AB218E1B23004801B0 /* GameOverviewBuilder.m in Sources */,
 				A7D190A9218E1B23004801B0 /* GameOverviewInteractor.m in Sources */,
 				A7D190B6218E25D4004801B0 /* CompletionActionBuilder.m in Sources */,

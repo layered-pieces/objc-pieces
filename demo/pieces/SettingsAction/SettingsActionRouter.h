@@ -17,6 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 __attribute__((objc_subclassing_restricted))
 @interface SettingsActionRouter : RIBRouter<SettingsActionInteractor *>
 
+- (void)routeToSettings;
+- (void)dismissSettings;
+
+@property (nonatomic, readonly) id<RIBApplicationEnvironment> applicationEnvironment;
+
 - (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(SettingsActionInteractor *)interactor NS_DESIGNATED_INITIALIZER;
 

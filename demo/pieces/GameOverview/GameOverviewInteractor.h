@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 __attribute__((objc_subclassing_restricted))
 @interface GameOverviewInteractor : RIBPresentableInteractor<GameOverviewRouter *, GameOverviewViewController *>
 
-@property (nonatomic, readonly) dispatch_block_t settingsAction;
-
 - (instancetype)init NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithViewController:(GameOverviewViewController *)viewController NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 

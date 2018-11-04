@@ -14,9 +14,9 @@
 
 @implementation SettingsActionBuilder
 
-+ (SettingsActionRouter *)buildWithBlock:(dispatch_block_t)block
++ (SettingsActionRouter *)build
 {
-    SettingsActionInteractor *interactor = [[SettingsActionInteractor alloc] initWithBlock:block];
+    SettingsActionInteractor *interactor = [[SettingsActionInteractor alloc] init];
     SettingsActionRouter *router = [[SettingsActionRouter alloc] initWithInteractor:interactor];
 
     return router;

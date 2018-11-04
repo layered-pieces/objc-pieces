@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SettingsInteractor.h"
+
 @import pieces;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,8 +22,11 @@ __attribute__((objc_subclassing_restricted))
 @property (nonatomic, readonly) dispatch_block_t block;
 @property (nonatomic, readonly) UIBarButtonItem *barButtonItem;
 
-- (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
-- (instancetype)initWithBlock:(dispatch_block_t)block NS_DESIGNATED_INITIALIZER;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+@end
+
+@interface SettingsActionInteractor (SettingsInteractorDelegate) <SettingsInteractorDelegate>
 
 @end
 

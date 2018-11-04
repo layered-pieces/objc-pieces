@@ -11,9 +11,12 @@
 
 @interface GameOverviewInteractor ()
 
+@property (nonatomic, readonly) NSString *backgroundColor;
+
 @end
 
 @implementation GameOverviewInteractor
+@dynamic backgroundColor;
 
 - (instancetype)init
 {
@@ -21,12 +24,16 @@
     viewController.delegate = self;
 
     if (self = [super initWithViewController:viewController]) {
-        __weak typeof(self) welf = self;
-        _settingsAction = ^{
-            [welf.router routeToSettings];
-        };
+        if (self.backgroundColor != nil) {
+            viewController.view.backgroundColor = [(id)[UIColor class] valueForKey:[NSString stringWithFormat:@"%@Color", self.backgroundColor]];
+        }
     }
     return self;
+}
+
+- (void)rib_injectedDependencyDidChange:(NSString *)dependency
+{
+    self.viewController.view.backgroundColor = [(id)[UIColor class] valueForKey:[NSString stringWithFormat:@"%@Color", self.backgroundColor]];
 }
 
 @end

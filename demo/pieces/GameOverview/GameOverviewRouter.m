@@ -9,6 +9,7 @@
 #import "GameOverviewRouter.h"
 
 #import "SettingsActionBuilder.h"
+
 #import "CompletionActionBuilder.h"
 
 @interface GameOverviewRouter ()
@@ -23,7 +24,7 @@
 - (instancetype)initWithInteractor:(GameOverviewInteractor *)interactor logoutAction:(nonnull dispatch_block_t)logoutAction
 {
     if (self = [super initWithInteractor:interactor]) {
-        _settingsAction = [SettingsActionBuilder buildWithBlock:interactor.settingsAction];
+        _settingsAction = [SettingsActionBuilder build];
         _completionAction = [CompletionActionBuilder buildWithBlock:logoutAction];
 
         [self attachChild:self.settingsAction];
@@ -38,6 +39,11 @@
 - (void)routeToSettings
 {
     NSLog(@"Display settings");
+}
+
+- (void)routeFromSettings
+{
+    
 }
 
 @end

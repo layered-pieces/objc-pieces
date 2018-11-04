@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 __attribute__((objc_subclassing_restricted))
 @interface GameOverviewRouter : RIBRouter<GameOverviewInteractor *>
 
-- (void)routeToSettings;
-
 - (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(GameOverviewInteractor *)interactor NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(GameOverviewInteractor *)interactor logoutAction:(dispatch_block_t)logoutAction NS_DESIGNATED_INITIALIZER;
