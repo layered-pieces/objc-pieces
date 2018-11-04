@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, class, readonly) RIBDependencyGraph *defaultDependencyGraph;
 
 @property (nonatomic, readonly) Interactor interactor;
+@property (nonatomic, strong) NSString *name;
 
 - (instancetype)init NS_DESIGNATED_INITIALIZER NS_UNAVAILABLE;
 - (instancetype)initWithInteractor:(Interactor)interactor NS_DESIGNATED_INITIALIZER;

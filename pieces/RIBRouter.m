@@ -80,6 +80,7 @@
     assert(interactor.router == nil);
 
     if (self = [super init]) {
+        _name = [NSStringFromClass(self.class) stringByReplacingOccurrencesOfString:@"Router" withString:@""];
         _children = @[];
         _interactor = interactor;
         interactor.router = self;
@@ -110,6 +111,34 @@
 - (void)rib_injectedDependencyDidChange:(NSString *)dependency
 {
     
+}
+
+#pragma mark - description
+
+- (NSString *)debugDescription
+{
+    return [self _debugDescriptionWithIndentation:0];
+}
+
+- (NSString *)_debugDescriptionWithIndentation:(NSInteger)indentation
+{
+    NSMutableString *result = [NSMutableString string];
+    [result appendFormat:@"%@%@\n", [@"" stringByPaddingToLength:indentation withString:@" " startingAtIndex:0], self.name];
+    
+    BOOL childrenAreEmpty = [self.children indexOfObjectPassingTest:^BOOL(RIBRouter * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return obj.children.count > 0;
+    }] == NSNotFound;
+    
+    if (self.children.count > 0 && childrenAreEmpty) {
+        [result appendFormat:@"%@%@\n", [@"" stringByPaddingToLength:indentation + 2 withString:@" " startingAtIndex:0], [[self.children valueForKeyPath:@"name"] componentsJoinedByString:@", "]];
+    } else {
+        for (RIBRouter *child in self.children) {
+            NSString *description = [child _debugDescriptionWithIndentation:indentation + 2];
+            [result appendString:description];
+        }
+    }
+    
+    return result;
 }
 
 #pragma mark - instance methods
@@ -147,6 +176,8 @@
     }];
     
     childRouter.parent = nil;
+    [self.mutableChildren removeObject:childRouter];
+    
     [childRouter didDetachFromParent:self];
 }
 

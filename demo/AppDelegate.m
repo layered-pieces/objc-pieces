@@ -30,6 +30,10 @@
     _router = [RootBuilder buildWithEnvironment:application.applicationEnvironment];
     [_router launch:self.window];
     
+    [NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        NSLog(@"\n%@", self.router.debugDescription);
+    }];
+    
     return YES;
 }
 
