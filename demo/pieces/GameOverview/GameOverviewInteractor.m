@@ -25,10 +25,16 @@
     viewController.delegate = self;
 
     if (self = [super initWithViewController:viewController]) {
+        viewController.title = self.playerName;
+        
         if (self.backgroundColor != nil) {
-            viewController.title = self.playerName;
             viewController.view.backgroundColor = [(id)[UIColor class] valueForKey:[NSString stringWithFormat:@"%@Color", self.backgroundColor]];
         }
+        
+        __weak typeof(self) welf = self;
+        _gameCompletionAction = ^{
+            [welf.router dismissGame];
+        };
     }
     return self;
 }
@@ -42,5 +48,10 @@
 @end
 
 @implementation GameOverviewInteractor (GameOverviewViewControllerDelegate)
+
+- (void)gameOverviewViewControllerPlayButtonTapped:(GameOverviewViewController *)viewController
+{
+    [self.router routeToGame];
+}
 
 @end

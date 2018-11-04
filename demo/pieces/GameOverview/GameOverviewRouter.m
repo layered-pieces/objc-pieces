@@ -8,12 +8,13 @@
 
 #import "GameOverviewRouter.h"
 
+#import "GameBuilder.h"
 #import "SettingsActionBuilder.h"
-
 #import "CompletionActionBuilder.h"
 
 @interface GameOverviewRouter ()
 
+@property (nonatomic, nullable) GameRouter *game;
 @property (nonatomic, readonly) SettingsActionRouter *settingsAction;
 @property (nonatomic, readonly) CompletionActionRouter *completionAction;
 
@@ -36,14 +37,15 @@
     return self;
 }
 
-- (void)routeToSettings
+- (void)routeToGame
 {
-    NSLog(@"Display settings");
+    self.game = [GameBuilder buildWithCompletion:self.interactor.gameCompletionAction];
+    [self attachChild:self.game];
 }
 
-- (void)routeFromSettings
+- (void)dismissGame
 {
-    
+    [self detachChild:self.game]; self.game = nil;
 }
 
 @end

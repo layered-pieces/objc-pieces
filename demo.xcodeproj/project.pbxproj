@@ -43,6 +43,9 @@
 		A7D190FD218F7335004801B0 /* NameSettingBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190F5218F7335004801B0 /* NameSettingBuilder.m */; };
 		A7D190FE218F7335004801B0 /* NameSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190F6218F7335004801B0 /* NameSettingViewController.m */; };
 		A7D190FF218F7335004801B0 /* NameSettingPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D190F9218F7335004801B0 /* NameSettingPresenter.m */; };
+		A7D19106218F7A8E004801B0 /* GameInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D19100218F7A8E004801B0 /* GameInteractor.m */; };
+		A7D19107218F7A8E004801B0 /* GameRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D19101218F7A8E004801B0 /* GameRouter.m */; };
+		A7D19108218F7A8E004801B0 /* GameBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D19102218F7A8E004801B0 /* GameBuilder.m */; };
 		ED8E1ABCE80C36D24BD1D29C /* Pods_abstract_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D927CF478C266AB7D14063 /* Pods_abstract_demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +124,12 @@
 		A7D190F8218F7335004801B0 /* NameSettingInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameSettingInteractor.h; sourceTree = "<group>"; };
 		A7D190F9218F7335004801B0 /* NameSettingPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NameSettingPresenter.m; sourceTree = "<group>"; };
 		A7D190FA218F7335004801B0 /* NameSettingBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NameSettingBuilder.h; sourceTree = "<group>"; };
+		A7D19100218F7A8E004801B0 /* GameInteractor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameInteractor.m; sourceTree = "<group>"; };
+		A7D19101218F7A8E004801B0 /* GameRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameRouter.m; sourceTree = "<group>"; };
+		A7D19102218F7A8E004801B0 /* GameBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameBuilder.m; sourceTree = "<group>"; };
+		A7D19103218F7A8E004801B0 /* GameRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameRouter.h; sourceTree = "<group>"; };
+		A7D19104218F7A8E004801B0 /* GameInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameInteractor.h; sourceTree = "<group>"; };
+		A7D19105218F7A8E004801B0 /* GameBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameBuilder.h; sourceTree = "<group>"; };
 		F7846A9DB3D792137C904793 /* Pods-abstract-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-abstract-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-abstract-demo/Pods-abstract-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +207,12 @@
 		A793CD77218C751F00D96799 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				A7D19105218F7A8E004801B0 /* GameBuilder.h */,
+				A7D19102218F7A8E004801B0 /* GameBuilder.m */,
+				A7D19104218F7A8E004801B0 /* GameInteractor.h */,
+				A7D19100218F7A8E004801B0 /* GameInteractor.m */,
+				A7D19103218F7A8E004801B0 /* GameRouter.h */,
+				A7D19101218F7A8E004801B0 /* GameRouter.m */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -467,6 +482,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7D19107218F7A8E004801B0 /* GameRouter.m in Sources */,
+				A7D19108218F7A8E004801B0 /* GameBuilder.m in Sources */,
 				A7C1C819218C5F59009F4676 /* ViewController.m in Sources */,
 				A7C1C824218C5F5B009F4676 /* main.m in Sources */,
 				A793CD83218C757A00D96799 /* RootInteractor.m in Sources */,
@@ -487,6 +504,7 @@
 				A7D19093218E19D5004801B0 /* LoggedInRouter.m in Sources */,
 				A793CD80218C756B00D96799 /* RootRouter.m in Sources */,
 				A7D190DC218F627A004801B0 /* SettingsInteractor.m in Sources */,
+				A7D19106218F7A8E004801B0 /* GameInteractor.m in Sources */,
 				A7D19086218E17F0004801B0 /* SettingsActionInteractor.m in Sources */,
 				A7D190FE218F7335004801B0 /* NameSettingViewController.m in Sources */,
 				A7D190DE218F627A004801B0 /* SettingsBuilder.m in Sources */,

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol GameOverviewViewControllerDelegate <NSObject>
 
+- (void)gameOverviewViewControllerPlayButtonTapped:(GameOverviewViewController *)viewController;
+
 @end
 
 __attribute__((objc_subclassing_restricted))
