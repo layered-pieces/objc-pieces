@@ -4,5 +4,5 @@
 
 ```
 gem install cocoapods-templates
-pod templates https://github.com/objc-pieces/pieces.git
+pod templates https://github.com/layered-pieces/objc-pieces.git
 ```
