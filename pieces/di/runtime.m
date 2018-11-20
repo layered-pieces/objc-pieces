@@ -207,7 +207,7 @@ BOOL rib_implementDependencyObserver(Class klass, NSString *dependency)
         rib_dependencyDidChange(self, dependency);
     });
     
-    return class_replaceMethod(klass, setter, swizzledImplementation, "v@:@");
+    return class_replaceMethod(klass, setter, swizzledImplementation, "v@:@") != NULL;
 }
 
 #pragma mark - property injection
