@@ -28,11 +28,16 @@ Pod::Spec.new do |s|
 
   s.subspec 'core' do |ss|
     ss.source_files = 'pieces'
+    
     ss.dependency 'pieces/di'
+    ss.dependency 'pieces/reactive'
   end
 
   s.subspec 'di' do |ss|
     ss.source_files = 'pieces/di'
   end
-
+  
+  s.subspec 'reactive' do |ss|
+    ss.source_files = 'pieces/reactive'
+  end
 end

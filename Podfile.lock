@@ -1,9 +1,11 @@
 PODS:
-  - pieces (0.0.1):
-    - pieces/core (= 0.0.1)
-  - pieces/core (0.0.1):
+  - pieces (0.1.0):
+    - pieces/core (= 0.1.0)
+  - pieces/core (0.1.0):
     - pieces/di
-  - pieces/di (0.0.1)
+    - pieces/reactive
+  - pieces/di (0.1.0)
+  - pieces/reactive (0.1.0)
 
 DEPENDENCIES:
   - pieces (from `.`)
@@ -13,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  pieces: 9571b18d9020934d80253f43e672c629f0d47efb
+  pieces: 5703160ba2c278f452d2eda501c430793f3d1375
 
 PODFILE CHECKSUM: a5ae38bc3646088c3c0d2584025778a77ccb5b3f
 
