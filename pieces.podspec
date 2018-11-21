@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name               = "pieces"
-  s.version            = "0.1.0"
+  s.version            = "0.2.0"
   s.summary            = "Objective-C pieces, heavily inspired by uber RIBs"
   s.homepage           = "https://github.com/objc-pieces/pieces"
   s.license            = "MIT"
