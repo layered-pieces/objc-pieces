@@ -1,21 +1,26 @@
 PODS:
-  - pieces (0.1.0):
-    - pieces/core (= 0.1.0)
-  - pieces/core (0.1.0):
+  - pieces (0.2.1):
+    - pieces/core (= 0.2.1)
+  - pieces/core (0.2.1):
     - pieces/di
-    - pieces/reactive
-  - pieces/di (0.1.0)
-  - pieces/reactive (0.1.0)
+    - ReactiveObjC (~> 3.0)
+  - pieces/di (0.2.1)
+  - ReactiveObjC (3.1.0)
 
 DEPENDENCIES:
   - pieces (from `.`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ReactiveObjC
 
 EXTERNAL SOURCES:
   pieces:
     :path: "."
 
 SPEC CHECKSUMS:
-  pieces: 5703160ba2c278f452d2eda501c430793f3d1375
+  pieces: 45340218f3576d3e4f21ee6c98dd19406bbf65c3
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
 
 PODFILE CHECKSUM: a5ae38bc3646088c3c0d2584025778a77ccb5b3f
 
